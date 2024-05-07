@@ -22,7 +22,6 @@ def deletion(prompt=True):
         print("Nie znaleziono folderu.")
         return False
         
-    
     if prompt:
         full_files = []
 
