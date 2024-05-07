@@ -1,6 +1,18 @@
 import csv
 
 def count(price_key="cena", amount_key="ilosc", file="dane.csv"):
+    """
+    This function counts a total revenue from a CSV file.
+
+    Input:
+    price_key - price key in the CSV file
+    amount_key - amount key in the CSV file
+    file - name of a file a user wants to analyze
+
+    Output:
+    float - total revenue.
+    boolean value - False if failed.
+    """
     with open(file, newline='') as csvfile:
         price_index = False
         amount_index = False
@@ -22,19 +34,21 @@ def count(price_key="cena", amount_key="ilosc", file="dane.csv"):
 
         if price_index == False:
             print("Nie znaleziono klucza ceny.")
+            return False
 
         else:
             print(f"Indeks ceny: {price_index}")
 
         if amount_index == False:
             print("Nie znaleziono klucza ilosci.")
+            return False
 
         else:
             print(f"Indeks ilosci: {amount_index}")
 
         for row in rows[1::]:
-            final += int(row[price_index]) * int(row[amount_index])
+            final += float(row[price_index]) * float(row[amount_index])
 
-    return final
+    return float(final)
 
 print(f"Calkowity przychod: {count()}")
